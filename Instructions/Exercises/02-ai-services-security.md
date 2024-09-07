@@ -113,7 +113,7 @@ Pertama, Anda perlu membuat brankas kunci dan menambahkan *rahasia* untuk kunci 
 5. Pilih **+ Hasilkan/Impor** dan tambahkan rahasia baru dengan pengaturan berikut:
     - **Opsi unggah**: Manual
     - **Nama**: AI-Services-Key *(penting untuk mencocokkan hal ini dengan tepat, karena nanti Anda akan menjalankan kode yang mengambil rahasia berdasarkan nama ini)*
-    - **Nilai**: *Kunci layanan Azure AI **key1** Anda*
+    - **Nilai rahasia**: *Anda **key1** kunci layanan Azure AI*
 6. Pilih **Buat**.
 
 ### Membuat perwakilan layanan
@@ -167,16 +167,16 @@ Anda kini siap menggunakan identitas prinsipal layanan dalam aplikasi sehingga h
 
     ```
     dotnet add package Azure.AI.TextAnalytics --version 5.3.0
-    dotnet add package Azure.Identity --version 1.5.0
-    dotnet add package Azure.Security.KeyVault.Secrets --version 4.2.0-beta.3
+    dotnet add package Azure.Identity --version 1.12.0
+    dotnet add package Azure.Security.KeyVault.Secrets --version 4.6.0
     ```
 
     **Python**
 
     ```
     pip install azure-ai-textanalytics==5.3.0
-    pip install azure-identity==1.5.0
-    pip install azure-keyvault-secrets==4.2.0
+    pip install azure-identity==1.17.1
+    pip install azure-keyvault-secrets==4.8.0
     ```
 
 3. Lihat konten folder **keyvault-client**, dan perhatikan bahwa folder tersebut berisi file untuk pengaturan konfigurasi:
@@ -222,7 +222,7 @@ Anda kini siap menggunakan identitas prinsipal layanan dalam aplikasi sehingga h
 
 Jika Anda tidak menggunakan sumber daya Azure yang dibuat di lab ini untuk modul pelatihan lainnya, Anda dapat menghapusnya untuk menghindari dikenakan biaya lebih lanjut.
 
-1. Buka portal Azure di `https://portal.azure.com`, dan di bilah pencarian atas, cari sumber daya yang Anda buat di lab ini.
+1. Buka portal Microsoft Azure di`https://portal.azure.com`, dan di bilah pencarian atas, cari sumber daya yang Anda buat di lab ini.
 
 2. Pada halaman sumber daya, pilih **Hapus** dan ikuti instruksi untuk menghapus sumber daya. Atau, Anda dapat menghapus seluruh grup sumber daya untuk membersihkan semua sumber daya secara bersamaan.
 

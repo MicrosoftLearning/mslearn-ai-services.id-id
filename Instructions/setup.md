@@ -22,7 +22,7 @@ Instal [Edge (Chromium)](https://microsoft.com/edge)
 
 ### .NET Core SDK
 
-1. Unduh dan instal dari https://dotnet.microsoft.com/download (unduh .NET Core SDK - bukan hanya runtime bahasa umum). Jika menjalankan lab dalam kursus ini di komputer sendiri, Anda harus memiliki .NET 7.0. Lab telah diuji dengan .NET 7.0, tetapi 7.0 saat ini sudah tidak didukung. Anda dapat menggunakan 8.0, tetapi mungkin terdapat beberapa masalah kecil. Sangat disarankan untuk menggunakan lingkungan yang dihosting.
+1. Unduh dan instal dari https://dotnet.microsoft.com/download (unduh .NET Core SDK - bukan hanya runtime bahasa umum). Jika Anda menjalankan lab dalam kursus ini di komputer sendiri, Anda harus memiliki .NET 8.0.
 
 ### C++ Redistributable
 
