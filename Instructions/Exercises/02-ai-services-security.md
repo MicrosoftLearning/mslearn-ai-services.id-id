@@ -43,13 +43,16 @@ Jika Belum memilikinya di langganan, Anda harus menyediakan sumber daya **Layana
 
 ## Mengelola kunci autentikasi
 
-Saat Anda membuat sumber daya layanan Azure AI, dua kunci autentikasi dibuat. Anda dapat mengelola ini di portal Azure atau dengan menggunakan antarmuka baris perintah Azure (CLI).
+Saat Anda membuat sumber daya layanan Azure AI, dua kunci autentikasi dibuat. Anda dapat mengelola ini di portal Azure atau dengan menggunakan antarmuka baris perintah Azure (CLI). 
 
-1. Di portal Azure, buka sumber daya layanan Azure AI Anda dan tampilkan halaman **Kunci dan Titik Akhir**. Halaman ini berisi informasi yang Anda perlukan untuk terhubung ke sumber daya Anda dan menggunakannya dari aplikasi yang Anda kembangkan. Khususnya:
+1. Pilih satu metode untuk mendapatkan kunci autentikasi dan titik akhir Anda: 
+
+    **Menggunakan portal Azure**: Di portal Azure, buka sumber daya layanan Azure AI Anda dan tampilkan halaman **Kunci dan Titik Akhir**  Halaman ini berisi informasi yang Anda perlukan untuk terhubung ke sumber daya Anda dan menggunakannya dari aplikasi yang Anda kembangkan. Khususnya:
     - *Titik akhir* HTTP tempat aplikasi klien dapat mengirim permintaan.
     - Dua *kunci* yang dapat digunakan untuk autentikasi (aplikasi klien dapat menggunakan salah satu kunci. Praktik yang umum adalah menggunakan satu untuk pengembangan, dan satu lagi untuk produksi. Anda dapat dengan mudah membuat ulang kunci pengembangan setelah pengembang menyelesaikan pekerjaan mereka untuk mencegah akses lanjutan).
     - *Lokasi* tempat sumber daya dihosting. Ini diperlukan untuk permintaan ke beberapa (tetapi tidak semua) API.
-2. Anda kini dapat menggunakan perintah berikut untuk mendapatkan daftar kunci layanan Azure AI dengan mengganti *&lt;resourceName&gt;* dengan nama sumber daya layanan Azure AI Anda, dan *&lt;resourceGroup&gt;* dengan nama grup sumber daya tempat Anda membuatnya.
+
+    **Menggunakan Baris Perintah**: Atau Anda dapat menggunakan perintah berikut untuk mendapatkan daftar kunci layanan Azure AI. Di Visual Studio Code, buka terminal baru. Kemudian tempel perintah berikut; mengganti *&lt;resourceName&gt;* dengan nama sumber daya layanan Azure AI Anda, dan *&lt;resourceGroup&gt;* dengan nama grup sumber daya tempat Anda membuatnya.
 
     ```
     az cognitiveservices account keys list --name <resourceName> --resource-group <resourceGroup>
@@ -59,13 +62,13 @@ Saat Anda membuat sumber daya layanan Azure AI, dua kunci autentikasi dibuat. An
 
     > **Tips**: Jika Anda belum mengautentikasi Azure CLI, jalankan `az login` dan masuk ke akun Anda.
 
-3. Untuk menguji layanan Azure AI, Anda dapat menggunakan **curl** - alat baris perintah untuk permintaan HTTP. Di folder **02-ai-services-security**, buka **rest-test.cmd** dan edit perintah **curl** yang ada di dalamnya (ditunjukkan di bawah), ganti *&lt;yourEndpoint&gt;* dan *&lt;yourKey&gt;* dengan URI titik akhir dan kunci **Key1** untuk menggunakan API Analisis Teks di sumber daya layanan Azure AI Anda.
+2. Untuk menguji layanan Azure AI, Anda dapat menggunakan **curl** - alat baris perintah untuk permintaan HTTP. Di folder **02-ai-services-security**, buka **rest-test.cmd** dan edit perintah **curl** yang ada di dalamnya (ditunjukkan di bawah), ganti *&lt;yourEndpoint&gt;* dan *&lt;yourKey&gt;* dengan URI titik akhir dan kunci **Key1** untuk menggunakan API Analisis Teks di sumber daya layanan Azure AI Anda.
 
     ```bash
-    curl -X POST "<yourEndpoint>/language/:analyze-text?api-version=2023-04-01" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: 81468b6728294aab99c489664a818197" --data-ascii "{'analysisInput':{'documents':[{'id':1,'text':'hello'}]}, 'kind': 'LanguageDetection'}"
+    curl -X POST "<yourEndpoint>/language/:analyze-text?api-version=2023-04-01" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <your-key>" --data-ascii "{'analysisInput':{'documents':[{'id':1,'text':'hello'}]}, 'kind': 'LanguageDetection'}"
     ```
 
-4. Simpan perubahan Anda, lalu jalankan perintah berikut:
+3. Simpan perubahan Anda. Di terminal, navigasikan ke folder "02-ai-services-security". (**Catatan**: Anda dapat melakukan ini dengan mengklik kanan folder 02-ai-services-security" di penjelajah Anda, dan memilih *Buka di Terminal Terintegrasi*). Kemudian, jalankan perintah berikut:
 
     ```
     ./rest-test.cmd
@@ -73,7 +76,7 @@ Saat Anda membuat sumber daya layanan Azure AI, dua kunci autentikasi dibuat. An
 
 Perintah mengembalikan dokumen JSON yang berisi informasi tentang bahasa yang terdeteksi dalam data input (yang seharusnya bahasa Inggris).
 
-5. Jika kunci disusupi, atau pengembang yang memilikinya tidak lagi memerlukan akses, Anda dapat membuat ulang di portal atau dengan menggunakan Azure CLI. Jalankan perintah berikut untuk membuat ulang kunci **key1** Anda (menggantikan *&lt;resourceName&gt;* dan *&lt;resourceGroup&gt;* untuk sumber daya Anda).
+4. Jika kunci disusupi, atau pengembang yang memilikinya tidak lagi memerlukan akses, Anda dapat membuat ulang di portal atau dengan menggunakan Azure CLI. Jalankan perintah berikut untuk membuat ulang kunci **key1** Anda (menggantikan *&lt;resourceName&gt;* dan *&lt;resourceGroup&gt;* untuk sumber daya Anda).
 
     ```
     az cognitiveservices account keys regenerate --name <resourceName> --resource-group <resourceGroup> --key-name key1
@@ -81,8 +84,8 @@ Perintah mengembalikan dokumen JSON yang berisi informasi tentang bahasa yang te
 
 Daftar kunci untuk sumber daya layanan Azure AI Anda dikembalikan - perhatikan bahwa **key1** telah berubah sejak terakhir kali Anda mengambilnya.
 
-6. Jalankan kembali perintah **rest-test** dengan kunci lama (Anda dapat menggunakan panah **^** di keyboard untuk menelusuri perintah sebelumnya), dan pastikan bahwa hal tersebut kini gagal.
-7. Edit perintah *curl* di **rest-test.cmd** dengan mengganti kunci dengan nilai **key1** yang baru, dan simpan perubahannya. Kemudian jalankan kembali perintah **rest-test** dan pastikan bahwa itu berhasil.
+5. Jalankan kembali perintah **rest-test** dengan kunci lama (Anda dapat menggunakan panah **^** di keyboard untuk menelusuri perintah sebelumnya), dan pastikan bahwa hal tersebut kini gagal.
+6. Edit perintah *curl* di **rest-test.cmd** dengan mengganti kunci dengan nilai **key1** yang baru, dan simpan perubahannya. Kemudian jalankan kembali perintah **rest-test** dan pastikan bahwa itu berhasil.
 
 > **Tips**: Dalam latihan ini, Anda menggunakan nama lengkap parameter Azure CLI, seperti **--resource-group**.  Anda juga dapat menggunakan alternatif yang lebih pendek, seperti **-g**, untuk membuat perintah Anda tidak terlalu bertele-tele (tetapi sedikit lebih sulit untuk dipahami).  [Referensi perintah CLI Layanan Azure AI](https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest) mencantumkan opsi parameter untuk setiap perintah CLI layanan Azure AI.
 
