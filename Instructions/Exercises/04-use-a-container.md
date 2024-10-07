@@ -16,12 +16,12 @@ Banyak dari API layanan Azure AI dapat dikemas dan disebarkan dalam sebuah *kont
 
 Anda akan mengembangkan kode menggunakan Visual Studio Code. File kode untuk aplikasi Anda telah disediakan di repositori GitHub.
 
-> **Tips**: Jika Anda sudah mengkloning repositori **mslearn-ai-services**, buka di Visual Studio Code. Atau, ikuti langkah-langkah ini untuk mengkloningnya ke lingkungan pengembangan Anda.
+> **Tips**: Jika Anda sudah mengkloning repositori **mslearn-ai-services**, buka dalam Visual Studio Code. Atau, ikuti langkah-langkah ini untuk mengkloningnya ke lingkungan pengembangan Anda.
 
 1. Memulai Visual Studio Code.
 2. Buka palet (SHIFT+CTRL+P) dan jalankan **Git: Perintah klon** untuk mengkloning repositori `https://github.com/MicrosoftLearning/mslearn-ai-services` ke folder lokal (tidak masalah folder mana).
 3. Setelah repositori dikloning, buka folder di Visual Studio Code.
-4. Tunggu selagi file tambahan diinstal untuk mendukung proyek kode C# di repositori, jika diperlukan
+4. Tunggu sementara file tambahan diinstal untuk mendukung proyek kode C# di repositori, jika diperlukan
 
     > **Catatan**: Jika Anda diminta untuk menambahkan aset yang diperlukan guna membangun dan men-debug, pilih **Tidak Sekarang**.
 
@@ -118,7 +118,7 @@ Jika Anda telah selesai bereksperimen dengan instans kontainer Anda, Anda harus 
 
 Jika Anda tidak menggunakan sumber daya Azure yang dibuat di lab ini untuk modul pelatihan lainnya, Anda dapat menghapusnya untuk menghindari dikenakan biaya lebih lanjut.
 
-1. Buka portal Azure di `https://portal.azure.com`, dan di bilah pencarian atas, cari sumber daya yang telah Anda buat di lab ini.
+1. Buka portal Microsoft Azure di`https://portal.azure.com`, dan di bilah pencarian atas, cari sumber daya yang Anda buat di lab ini.
 
 2. Pada halaman sumber daya, pilih **Hapus** dan ikuti instruksi untuk menghapus sumber daya. Atau, Anda dapat menghapus seluruh grup sumber daya untuk membersihkan semua sumber daya secara bersamaan.
 
