@@ -55,7 +55,7 @@ API layanan Azure AI berbasis REST, sehingga Anda dapat menggunakannya dengan me
     - **C#**: appsettings.json
     - **Python**: .env
 
-    Buka file konfigurasi dan perbarui nilai konfigurasi yang dikandungnya untuk mencerminkan **titik akhir** dan **kunci**autentikasi untuk sumber daya layanan Azure AI Anda. Simpan perubahan Anda.
+    Buka file konfigurasi dan perbarui nilai konfigurasi di dalamnya agar mencerminkan **titik akhir** dan **kunci** autentikasi untuk sumber daya layanan Azure AI Anda. Simpan perubahan Anda.
 
 3. Perhatikan bahwa folder **rest-client** berisi file kode untuk aplikasi klien:
 
@@ -113,7 +113,7 @@ Anda dapat menulis kode yang menggunakan REST API layanan Azure AI secara langsu
     - **C#**: appsettings.json
     - **Python**: .env
 
-    Buka file konfigurasi dan perbarui nilai konfigurasi yang dikandungnya untuk mencerminkan **titik akhir** dan **kunci**autentikasi untuk sumber daya layanan Azure AI Anda. Simpan perubahan Anda.
+    Buka file konfigurasi dan perbarui nilai konfigurasi di dalamnya agar mencerminkan **titik akhir** dan **kunci** autentikasi untuk sumber daya layanan Azure AI Anda. Simpan perubahan Anda.
     
 4. Perhatikan bahwa folder **sdk-client** berisi file kode untuk aplikasi klien:
 
@@ -122,7 +122,7 @@ Anda dapat menulis kode yang menggunakan REST API layanan Azure AI secara langsu
 
     Buka file kode dan tinjau kode yang ada di dalamnya, perhatikan detail berikut:
     - Namespace untuk SDK yang Anda instal telah diimpor
-    - Kode dalam fungsi **Main** mengambil titik akhir dan kunci untuk sumber daya layanan Azure AI Anda - ini akan digunakan dengan SDK untuk membuat klien untuk layanan Analisis Teks.
+    - Kode dalam fungsi **Utama** mengambil titik akhir dan kunci untuk sumber daya layanan Azure AI Anda - ini akan digunakan dengan SDK untuk membuat klien untuk layanan Analisis Teks.
     - Fungsi **GetLanguage** menggunakan SDK untuk membuat klien untuk layanan, dan kemudian menggunakan klien untuk mendeteksi bahasa teks yang dimasukkan.
 
 5. Kembali ke terminal, pastikan Anda berada di folder **sdk-client**, dan masukkan perintah berikut untuk menjalankan program:
@@ -148,7 +148,7 @@ Anda dapat menulis kode yang menggunakan REST API layanan Azure AI secara langsu
 
 Jika Anda tidak menggunakan sumber daya Azure yang dibuat di lab ini untuk modul pelatihan lainnya, Anda dapat menghapusnya untuk menghindari dikenakan biaya lebih lanjut.
 
-1. Buka portal Azure di `https://portal.azure.com`, dan di bilah pencarian atas, cari sumber daya yang Anda buat di lab ini.
+1. Buka portal Microsoft Azure di`https://portal.azure.com`, dan di bilah pencarian atas, cari sumber daya yang Anda buat di lab ini.
 
 2. Pada halaman sumber daya, pilih **Hapus** dan ikuti instruksi untuk menghapus sumber daya. Atau, Anda dapat menghapus seluruh grup sumber daya untuk membersihkan semua sumber daya secara bersamaan.
 
