@@ -42,9 +42,9 @@ Jika Belum memilikinya di langganan, Anda harus menyediakan sumber daya **Layana
 4. Tunggu hingga penyebaran selesai, lalu lihat detail penyebaran.
 5. Saat sumber daya telah diterapkan, buka dan lihat halaman **Kunci dan Titik Akhir**. Anda akan memerlukan titik akhir dan salah satu kunci dari halaman ini dalam prosedur selanjutnya.
 
-## Terapkan dan jalankan kontainer Analisis Teks
+## Terapkan dan jalankan kontainer Analisis Sentimen
 
-Banyak API layanan Azure AI yang biasa digunakan tersedia di citra kontainer. Untuk daftar lengkapnya, lihat [dokumentasi layanan Azure AI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#container-availability-in-azure-cognitive-services). Dalam latihan ini, Anda akan menggunakan gambar penampung untuk API *pendeteksian bahasa* Analisis Teks; tetapi prinsipnya sama untuk semua gambar yang tersedia.
+Banyak API layanan Azure AI yang biasa digunakan tersedia di citra kontainer. Untuk daftar lengkapnya, lihat [dokumentasi layanan Azure AI](https://learn.microsoft.com/en-us/azure/ai-services/cognitive-services-container-support#containers-in-azure-ai-services). Dalam latihan ini, Anda akan menggunakan gambar penampung API Analisis Teks *Analisis Sentimen*; namun prinsip-prinsipnya sama untuk semua gambar yang tersedia.
 
 1. Di portal Microsoft Azure, pada halaman **Beranda**, pilih tombol **&#65291;Buat sumber daya**, jelajahi *instans kontainer*, dan buat sumber daya **Instans Kontainer** dengan pengaturan berikut:
 
@@ -53,11 +53,13 @@ Banyak API layanan Azure AI yang biasa digunakan tersedia di citra kontainer. Un
         - **Grup sumber daya**: *Pilih grup sumber daya yang berisi sumber daya layanan Azure AI Anda*
         - **Nama penampung**: *Masukkan nama yang unik*
         - **Wilayah**: *Pilih wilayah yang tersedia*
+        - **Zona ketersediaan**: Tidak ada
+        - **SKU**: Standar
         - **Sumber gambar**: Registri Lainnya
         - **Jenis gambar**: Publik
-        - **Gambar**: `mcr.microsoft.com/azure-cognitive-services/textanalytics/language:latest`
+        - **Gambar**: `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:latest`
         - **Jenis OS**: Linux
-        - **Ukuran**: 1 vcpu, memori 12 GB
+        - **Ukuran**: 1 vcpu, memori 8 GB
     - **Jaringan**:
         - **Jenis jaringan**: Publik
         - **Label nama DNS**: *Masukkan nama unik untuk titik akhir penampung*
@@ -73,6 +75,7 @@ Banyak API layanan Azure AI yang biasa digunakan tersedia di citra kontainer. Un
             | No | `Eula` | `accept` |
 
         - **Penggantian perintah**: [ ]
+        - **Manajemen kunci**: Kunci yang dikelola Microsoft (MMK)
     - **Tag**:
         - *Jangan tambahkan tag apa pun*
 
@@ -83,11 +86,11 @@ Banyak API layanan Azure AI yang biasa digunakan tersedia di citra kontainer. Un
     - **Alamat IP**: Ini adalah alamat IP publik yang dapat Anda gunakan untuk mengakses instans kontainer Anda.
     - **FQDN**: Ini adalah *nama domain yang sepenuhnya memenuhi syarat* dari sumber daya instans kontainer, Anda dapat menggunakan ini untuk mengakses instans kontainer alih-alih alamat IP.
 
-    > **Catatan**: Dalam latihan ini, Anda telah menyebarkan citra kontainer layanan Azure AI untuk terjemahan teks ke sumber daya Azure Container Instances (ACI). Anda dapat menggunakan pendekatan serupa untuk menyebarkannya ke host *[Docker](https://www.docker.com/products/docker-desktop)* di komputer atau jaringan Anda sendiri dengan menjalankan perintah berikut (pada satu baris) untuk menyebarkan kontainer deteksi bahasa ke instans Docker lokal Anda, menggantikan *&lt;yourEndpoint&gt;* dan *&lt;yourKey&gt;* dengan URI titik akhir Anda dan salah satu kunci untuk sumber daya layanan Azure AI Anda.
+    > **Catatan**: Dalam latihan ini, Anda telah menerapkan gambar kontainer layanan Azure AI untuk analisis sentimen ke sumber daya Azure Container Instances (ACI). Anda dapat menggunakan pendekatan serupa untuk menerapkannya ke host *[Docker](https://www.docker.com/products/docker-desktop)* di komputer atau jaringan Anda sendiri dengan menjalankan perintah berikut (pada satu baris) untuk menerapkan kontainer analisis sentimen ke instans Docker lokal Anda, menggantikan *&lt;yourEndpoint&gt;* dan *&lt;yourKey&gt;* dengan URI titik akhir Anda dan salah satu kunci untuk sumber daya layanan Azure AI Anda.
     > Perintah akan mencari gambar di mesin lokal Anda, dan jika tidak menemukannya di sana, perintah akan menariknya dari registri gambar *mcr.microsoft.com* dan menyebarkannya ke instans Docker Anda. Saat penyebaran selesai, penampung akan mulai dan mendengarkan permintaan masuk pada port 5000.
 
     ```
-    docker run --rm -it -p 5000:5000 --memory 12g --cpus 1 mcr.microsoft.com/azure-cognitive-services/textanalytics/language:latest Eula=accept Billing=<yourEndpoint> ApiKey=<yourKey>
+    docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:latest Eula=accept Billing=<yourEndpoint> ApiKey=<yourKey>
     ```
 
 ## Gunakan kontainer
@@ -95,7 +98,7 @@ Banyak API layanan Azure AI yang biasa digunakan tersedia di citra kontainer. Un
 1. Di editor Anda, buka **rest-test.cmd**, dan edit perintah **curl** yang ada di dalamnya (ditampilkan di bawah), menggantikan *&lt;your_ACI_IP_address_or_FQDN&gt;* dengan alamat IP atau FQDN untuk kontainer Anda.
 
     ```
-    curl -X POST "http://<your_ACI_IP_address_or_FQDN>:5000/text/analytics/v3.0/languages" -H "Content-Type: application/json" --data-ascii "{'documents':[{'id':1,'text':'Hello world.'},{'id':2,'text':'Salut tout le monde.'}]}"
+    curl -X POST "http://<your_ACI_IP_address_or_FQDN>:5000/text/analytics/v3.1/sentiment" -H "Content-Type: application/json" --data-ascii "{'documents':[{'id':1,'text':'The performance was amazing! The sound could have been clearer.'},{'id':2,'text':'The food and service were unacceptable. While the host was nice, the waiter was rude and food was cold.'}]}"
     ```
 
 2. Simpan perubahan Anda terhadap skrip dengan menekan **CTRL+S**. Perhatikan bahwa Anda tidak perlu menentukan titik akhir atau kunci layanan Azure AI - permintaan diproses oleh layanan dalam kontainer. Kontainer pada gilirannya berkomunikasi secara berkala dengan layanan di Azure untuk melaporkan penggunaan untuk penagihan, tetapi tidak mengirim data permintaan.
@@ -105,7 +108,7 @@ Banyak API layanan Azure AI yang biasa digunakan tersedia di citra kontainer. Un
     ./rest-test.cmd
     ```
 
-4. Verifikasi bahwa perintah mengembalikan dokumen JSON yang berisi informasi tentang bahasa yang terdeteksi dalam dua dokumen input (yang harus bahasa Inggris dan Prancis).
+4. Verifikasi bahwa perintah mengembalikan dokumen JSON yang berisi informasi tentang sentimen yang terdeteksi dalam dua dokumen input (yang harus positif dan negatif, dengan urutan demikian).
 
 ## Pembersihan
 
