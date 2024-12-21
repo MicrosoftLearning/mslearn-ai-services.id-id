@@ -10,8 +10,6 @@ Menggunakan layanan Azure AI yang dihosting di Azure memungkinkan pengembang apl
 
 Banyak dari API layanan Azure AI dapat dikemas dan disebarkan dalam sebuah *kontainer*, memungkinkan organisasi untuk menghosting layanan Azure AI dalam infrastruktur mereka sendiri; misalnya di server Docker lokal, Azure Container Instances, atau kluster Azure Kubernetes Service. Layanan Azure AI dalam kontainer perlu berkomunikasi dengan akun layanan Azure AI berbasis Azure untuk mendukung penagihan; tetapi data aplikasi tidak diteruskan ke layanan back-end, dan organisasi memiliki kontrol lebih besar atas konfigurasi penyebaran kontainer mereka, memungkinkan solusi kustom untuk autentikasi, skalabilitas, dan pertimbangan lainnya.
 
-> **Catatan**: Saat ini ada masalah yang sedang diselidiki bahwa beberapa pengguna mengalami kontainer tidak disebarkan dengan benar, dan panggilan ke kontainer tersebut gagal. Pembaruan terhadap lab ini akan dibuat segera setelah masalah diatasi.
-
 ## Mengkloning repositori di Visual Studio Code
 
 Anda akan mengembangkan kode menggunakan Visual Studio Code. File kode untuk aplikasi Anda telah disediakan di repositori GitHub.
