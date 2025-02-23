@@ -29,7 +29,7 @@ Jika Anda belum memilikinya, Anda harus menyediakan sumber daya **Keamanan Konte
 
 ## Menggunakan Perisai Perintah Keamanan Konten Azure AI
 
-Dalam latihan ini Anda akan menggunakan Azure AI Studio untuk menguji Perisai Perintah Keamanan Konten dengan dua input sampel. Satu mensimulasikan permintaan pengguna, dan yang lainnya mensimulasikan dokumen dengan teks yang berpotensi tidak aman yang disematkan ke dalamnya.
+Dalam latihan ini, Anda akan menggunakan Azure AI Studio untuk menguji Perisai Prompt Keamanan Konten dengan dua input sampel. Satu mensimulasikan permintaan pengguna, dan yang lainnya mensimulasikan dokumen dengan teks yang berpotensi tidak aman yang disematkan ke dalamnya.
 
 1. Di tab browser lain, buka halaman Keamanan Konten [Azure AI Studio](https://ai.azure.com/explore/contentsafety) dan masuk.
 1. Di bawah **Moderasi konten teks** pilih **Cobalah**.
@@ -69,7 +69,7 @@ Anda sekarang akan membuat aplikasi di C# atau Python.
 * [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) adalah kerangka kerja target untuk latihan ini.
 * [Ekstensi C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) untuk Visual Studio Code.
 
-##### Menyiapkan
+##### Persiapan
 
 Lakukan langkah-langkah berikut untuk menyiapkan Visual Studio Code untuk latihan tersebut.
 
