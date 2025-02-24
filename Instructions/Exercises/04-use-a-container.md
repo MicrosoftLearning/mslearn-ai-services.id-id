@@ -30,7 +30,7 @@ Anda akan mengembangkan kode menggunakan Visual Studio Code. File kode untuk apl
 Jika Belum memilikinya di langganan, Anda harus menyediakan sumber daya **Layanan Azure AI**.
 
 1. Buka portal Microsoft Azure di `https://portal.azure.com`, dan masuk menggunakan akun Microsoft yang terkait dengan langganan Azure Anda.
-2. Di bilah pencarian teratas, cari *layanan Azure AI*, pilih **Layanan Azure AI**, dan buat sumber daya akun multi-layanan layanan Azure AI dengan pengaturan berikut:
+2. Di bilah pencarian atas, cari *layanan Azure AI*, pilih **akun multi-layanan layanan Azure AI** dan buat sumber daya dengan pengaturan berikut:
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Pilih atau buat grup sumber daya (jika Anda menggunakan langganan terbatas, Anda mungkin tidak memiliki izin untuk membuat grup sumber daya baru - gunakan yang disediakan)*
     - **Wilayah**: *Pilih wilayah yang tersedia*
